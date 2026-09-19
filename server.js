@@ -16,11 +16,11 @@ app.post('/api/chat', async (req, res) => {
         // Yeni SDK yapısına uygun istemci oluşturma
         const ai = new GoogleGenAI({ apiKey: apiKey });
 
-        const response = await ai.models.generateContent({
-            model: 'gemini-2.5-flash',
+const response = await ai.models.generateContent({
+            model: 'gemini-3.6-flash', // Burayı güncelledik
             contents: prompt,
             config: {
-                tools: [{ googleSearch: {} }] // Google Arama entegrasyonu
+                tools: [{ googleSearch: {} }]
             }
         });
 
