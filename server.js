@@ -13,11 +13,11 @@ app.post('/api/chat', async (req, res) => {
             return res.status(400).json({ error: 'API anahtarı ve mesaj gereklidir.' });
         }
 
-        // Yeni SDK yapısına uygun istemci oluşturma
-        const ai = new GoogleGenAI({ apiKey: apiKey });
+        // Doğru SDK başlatma yöntemi
+        const ai = new GoogleGenAI({ apiKey: apiKey.trim() });
 
-const response = await ai.models.generateContent({
-            model: 'gemini-3.6-flash', // Burayı güncelledik
+        const response = await ai.models.generateContent({
+            model: 'gemini-3.6-flash',
             contents: prompt,
             config: {
                 tools: [{ googleSearch: {} }]
